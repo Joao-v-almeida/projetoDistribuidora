@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 import DAO.DaoCliente;
 import model.ModelCliente;
 
-public class ControllerCliente {
+public class ControllerCliente { //TESTE JOÃO
 	private DaoCliente daoCliente = new DaoCliente();
 
 	public int salvarClienteController(ModelCliente modelCliente) {
