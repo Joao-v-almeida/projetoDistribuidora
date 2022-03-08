@@ -1,7 +1,10 @@
 package model;
 
 public class ModelCliente {
-
+		
+	// Teste
+	
+	
 	// ATRIBUTOS
 	public int idCliente;
 	public String nomeCliente;
