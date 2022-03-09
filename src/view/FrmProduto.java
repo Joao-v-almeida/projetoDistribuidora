@@ -46,6 +46,7 @@ public class FrmProduto extends JFrame {
 	JButton btnNovoProduto = new JButton("");
 	JButton btnAlterarProduto = new JButton("");
 	JButton btnExcluirProduto = new JButton("");
+	JButton btnCancelarOperacao = new JButton("");
 	JFormattedTextField txtEstoqueProduto = new JFormattedTextField();
 	JFormattedTextField txtValorProduto = new JFormattedTextField();
 
@@ -87,7 +88,7 @@ public class FrmProduto extends JFrame {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBackground(Color.LIGHT_GRAY);
 		setTitle("Produtos");
-		setBounds(100, 100, 408, 400);
+		setBounds(100, 100, 408, 440);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -96,8 +97,8 @@ public class FrmProduto extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setAlignmentY(Component.TOP_ALIGNMENT);
 		panel.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panel.setBackground(new Color(211, 211, 211));
-		panel.setBounds(0, 0, 392, 361);
+		panel.setBackground(new Color(240, 255, 255));
+		panel.setBounds(0, 0, 392, 401);
 		contentPane.add(panel);
 		panel.setLayout(null);
 
@@ -136,7 +137,7 @@ public class FrmProduto extends JFrame {
 		panel.add(txtNomeProduto);
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(23, 140, 345, 100);
+		scrollPane.setBounds(23, 140, 345, 120);
 		panel.add(scrollPane);
 
 		tbProdutos = new JTable();
@@ -180,7 +181,7 @@ public class FrmProduto extends JFrame {
 			}
 		});
 		btnNovoProduto.setIcon(new ImageIcon(FrmProduto.class.getResource("/img/icon_novo.png")));
-		btnNovoProduto.setBounds(23, 243, 43, 41);
+		btnNovoProduto.setBounds(23, 275, 43, 41);
 		panel.add(btnNovoProduto);
 		btnAlterarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -213,7 +214,7 @@ public class FrmProduto extends JFrame {
 			}
 		});
 		btnAlterarProduto.setIcon(new ImageIcon(FrmProduto.class.getResource("/img/icon_editar.png")));
-		btnAlterarProduto.setBounds(272, 295, 43, 41);
+		btnAlterarProduto.setBounds(270, 349, 43, 41);
 		panel.add(btnAlterarProduto);
 
 		btnExcluirProduto.addActionListener(new ActionListener() {
@@ -224,15 +225,21 @@ public class FrmProduto extends JFrame {
 
 					int codigoProduto = (int) tbProdutos.getValueAt(linhaSeleciona, 0);
 
-					if (controllerProduto.excluirProdutoController(codigoProduto)) {
-						JOptionPane.showMessageDialog(null, "Produto excluído com sucesso!", "Sucesso", 0,
-								new ImageIcon(getClass().getResource("/img/icon_correto.png")));
-						carregarProdutos();
-					} else {
-						JOptionPane.showMessageDialog(null, "Erro ao excuir Produto!!", "Atenção", 0,
-								new ImageIcon(getClass().getResource("/img/icon_erro.png")));
+					int confirma = JOptionPane.showConfirmDialog(null, "Deseja excluir o produto selecionado? ",
+							"Excluir", JOptionPane.YES_NO_OPTION);
+					if (confirma == JOptionPane.YES_OPTION) {
+
+						if (controllerProduto.excluirProdutoController(codigoProduto)) {
+							JOptionPane.showMessageDialog(null, "Produto excluído com sucesso!", "Sucesso", 0,
+									new ImageIcon(getClass().getResource("/img/icon_correto.png")));
+							carregarProdutos();
+						} else {
+							JOptionPane.showMessageDialog(null, "Erro ao excuir Produto!!", "Atenção", 0,
+									new ImageIcon(getClass().getResource("/img/icon_erro.png")));
+						}
+						;
+
 					}
-					;
 				} else {
 					JOptionPane.showMessageDialog(null, "Nenhum Produto Selecionado", "Atenção", 0,
 							new ImageIcon(getClass().getResource("/img/icon_erro.png")));
@@ -240,26 +247,29 @@ public class FrmProduto extends JFrame {
 			}
 		});
 		btnExcluirProduto.setIcon(new ImageIcon(FrmProduto.class.getResource("/img/icon_excluir.png")));
-		btnExcluirProduto.setBounds(23, 295, 43, 41);
+		btnExcluirProduto.setBounds(82, 275, 43, 41);
 		panel.add(btnExcluirProduto);
 		btnSalvarProduto.setEnabled(false);
 
 		btnSalvarProduto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				if (salvarAlterar.equals("salvar")) {
-					salvarProduto();
-				} else if (salvarAlterar.equals("alterar")) {
-					alterarProduto();
-				} else {
-					JOptionPane.showMessageDialog(null, "Erro ao salvar Produto", "Atenção", 0,
-							new ImageIcon(getClass().getResource("/img/icon_erro.png")));
+				if (controllerProduto.verificarItens(txtNomeProduto.getText(), txtEstoqueProduto.getText(),
+						txtValorProduto.getText())) {
+					if (salvarAlterar.equals("salvar")) {
+						salvarProduto();
+					} else if (salvarAlterar.equals("alterar")) {
+						alterarProduto();
+					} else {
+						JOptionPane.showMessageDialog(null, "Erro ao salvar Produto", "Atenção", 0,
+								new ImageIcon(getClass().getResource("/img/icon_erro.png")));
+					}
 				}
 
 			}
 		});
 		btnSalvarProduto.setIcon(new ImageIcon(FrmProduto.class.getResource("/img/icon_salvar.png")));
-		btnSalvarProduto.setBounds(325, 295, 43, 41);
+		btnSalvarProduto.setBounds(325, 349, 43, 41);
 		panel.add(btnSalvarProduto);
 
 		JSeparator separator = new JSeparator();
@@ -278,6 +288,21 @@ public class FrmProduto extends JFrame {
 
 		txtValorProduto.setBounds(251, 55, 117, 20);
 		panel.add(txtValorProduto);
+
+		JSeparator separator_1 = new JSeparator();
+		separator_1.setBounds(0, 327, 392, 3);
+		panel.add(separator_1);
+
+		btnCancelarOperacao.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limparCampos();
+				cancelaOperacao();
+			}
+		});
+		btnCancelarOperacao.setEnabled(false);
+		btnCancelarOperacao.setIcon(new ImageIcon(FrmProduto.class.getResource("/img/icon_cancelar.png")));
+		btnCancelarOperacao.setBounds(23, 349, 43, 41);
+		panel.add(btnCancelarOperacao);
 
 		carregarProdutos();
 		setLocationRelativeTo(null);
@@ -339,6 +364,7 @@ public class FrmProduto extends JFrame {
 		txtNomeProduto.setEnabled(condicao);
 		txtEstoqueProduto.setEnabled(condicao);
 		txtValorProduto.setEnabled(condicao);
+		btnCancelarOperacao.setEnabled(condicao);
 		limparCampos();
 		txtNomeProduto.grabFocus();
 	}
@@ -349,6 +375,17 @@ public class FrmProduto extends JFrame {
 		txtEstoqueProduto.setText("");
 		txtValorProduto.setText("");
 	}
+	
+	private void cancelaOperacao() {
+		txtCodigoProduto.setEnabled(false);
+		txtNomeProduto.setEnabled(false);
+		txtEstoqueProduto.setEnabled(false);
+		txtValorProduto.setEnabled(false);
+		btnSalvarProduto.setEnabled(false);
+		btnCancelarOperacao.setEnabled(false);
+		btnNovoProduto.grabFocus();
+	}
+
 
 	public class CellRenderer extends DefaultTableCellRenderer {
 
