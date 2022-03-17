@@ -46,6 +46,7 @@ public class FrmPrincipal {
 	 */
 	private void initialize() {
 		frmDistribuidora = new JFrame();
+		frmDistribuidora.setResizable(false);
 		frmDistribuidora.setExtendedState(Frame.MAXIMIZED_BOTH);
 		frmDistribuidora.setTitle("Distribuidora");
 		frmDistribuidora.setIconImage(Toolkit.getDefaultToolkit().getImage(FrmPrincipal.class.getResource("/img/icon_menu.png")));
