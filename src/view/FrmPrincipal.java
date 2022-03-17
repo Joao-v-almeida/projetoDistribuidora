@@ -80,6 +80,12 @@ public class FrmPrincipal {
 		menuCadastro.add(menuProdutos);
 		
 		JMenuItem menuUsuarios = new JMenuItem("Usu\u00E1rios");
+		menuUsuarios.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				FrmUsuario frmUsuario = new FrmUsuario();
+				frmUsuario.setVisible(true);
+			}
+		});
 		menuUsuarios.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/icon_usuario.png")));
 		menuCadastro.add(menuUsuarios);
 		
