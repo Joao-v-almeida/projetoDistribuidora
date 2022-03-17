@@ -42,7 +42,7 @@ public class DaoCliente extends ConexaoMySql {
 			this.conectar();
 			return this.executarUpdateDeleteSQL("UPDATE CLI_CLIENTE SET " + "CLI_NOME = '" + cliente.getNomeCliente()
 					+ "'," + "CLI_ENDERECO = '" + cliente.getEnderecoCliente() + "'," + "CLI_BAIRRO = '"
-					+ cliente.getBairroCliente() + "'," + "CLI_CIDADE = '" + cliente.getCidadeCliente() + "'," + "',"
+					+ cliente.getBairroCliente() + "'," + "CLI_CIDADE = '" + cliente.getCidadeCliente() + "',"
 					+ "CLI_UF = '" + cliente.getUfCliente() + "'," + "CLI_CEP = '" + cliente.getCepCliente() + "',"
 					+ "CLI_TELEFONE = '" + cliente.getTelefoneCliente() + "'" + " WHERE CLI_ID = '"
 					+ cliente.getIdCliente() + "';");
