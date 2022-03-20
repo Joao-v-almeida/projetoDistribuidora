@@ -6,7 +6,6 @@ import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.Toolkit;
-
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
@@ -28,6 +27,7 @@ import model.ModelUsuario;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.JPasswordField;
 
 public class FrmUsuario extends JFrame {
 	
@@ -39,7 +39,6 @@ public class FrmUsuario extends JFrame {
 	private JTextField txtCodUsu;
 	private JTextField txtNomeUsu;
 	private JTextField txtLoginUsu;
-	private JTextField txtSenha;
 	private JTable tableUsuario;
 	private JButton btnNovoUsuario = new JButton("");
 	private JButton btnCancelarUsuario = new JButton("");
@@ -48,6 +47,7 @@ public class FrmUsuario extends JFrame {
 	private JButton btnRemoverUsuario = new JButton("");
 	private String salvarAlterar;
 	private ArrayList<ModelUsuario> listaModelUsuario = new ArrayList<>();
+	private JPasswordField passwordSenhaUsuario;
 	
 	public FrmUsuario() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmUsuario.class.getResource("/img/icon_usuario.png")));
@@ -83,15 +83,15 @@ public class FrmUsuario extends JFrame {
 		setResizable(false);
 		setTitle("Usuario");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 456, 496);
+		setBounds(100, 100, 431, 496);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(240, 248, 255));
-		panel.setBounds(0, 0, 414, 441);
+		panel.setBounds(5, 5, 430, 447);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -135,15 +135,9 @@ public class FrmUsuario extends JFrame {
 		lblSenha.setBounds(21, 136, 46, 14);
 		panel.add(lblSenha);
 		
-		txtSenha = new JTextField();
-		txtSenha.setEnabled(false);
-		txtSenha.setBounds(68, 133, 273, 20);
-		panel.add(txtSenha);
-		txtSenha.setColumns(10);
-		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setFont(new Font("Times New Roman", Font.BOLD, 14));
-		scrollPane.setBounds(21, 187, 381, 120);
+		scrollPane.setBounds(18, 194, 373, 120);
 		panel.add(scrollPane);
 		
 		tableUsuario = new JTable();
@@ -163,11 +157,11 @@ public class FrmUsuario extends JFrame {
 		scrollPane.setViewportView(tableUsuario);
 		
 		JSeparator separator = new JSeparator();
-		separator.setBounds(0, 174, 430, 2);
+		separator.setBounds(0, 169, 414, 2);
 		panel.add(separator);
 		
 		JSeparator separator_1 = new JSeparator();
-		separator_1.setBounds(0, 369, 430, 2);
+		separator_1.setBounds(0, 380, 414, 2);
 		panel.add(separator_1);
 			btnCadastrarUsuario.setEnabled(false);
 			btnCadastrarUsuario.setToolTipText("SALVAR");
@@ -191,7 +185,7 @@ public class FrmUsuario extends JFrame {
 		
 		
 		btnCadastrarUsuario.setIcon(new ImageIcon(FrmUsuario.class.getResource("/img/icon_salvar.png")));
-		btnCadastrarUsuario.setBounds(21, 382, 57, 33);
+		btnCadastrarUsuario.setBounds(334, 397, 57, 33);
 		panel.add(btnCadastrarUsuario);
 		btnAlterarUsuario.setToolTipText("ALTERAR");
 		
@@ -217,7 +211,7 @@ public class FrmUsuario extends JFrame {
 						txtCodUsu.setText(String.valueOf(modelUsuario.getIdUsuario()));
 						txtNomeUsu.setText(modelUsuario.getNomeUsuario());
 						txtLoginUsu.setText(String.valueOf(modelUsuario.getLoginUsuario()));
-						txtSenha.setText(String.valueOf(modelUsuario.getSenhaUsuario()));
+						passwordSenhaUsuario.setText(String.valueOf(modelUsuario.getSenhaUsuario()));
 
 					} catch (Exception e2) {
 						JOptionPane.showMessageDialog(null, "Erro ao alterar o Usuario!", "Atenção", 0,
@@ -233,7 +227,7 @@ public class FrmUsuario extends JFrame {
 		});
 			
 			
-		btnAlterarUsuario.setBounds(187, 382, 57, 33);
+		btnAlterarUsuario.setBounds(267, 397, 57, 33);
 		panel.add(btnAlterarUsuario);
 			btnCancelarUsuario.setEnabled(false);
 			btnCancelarUsuario.setToolTipText("CANCELAR");
@@ -251,7 +245,7 @@ public class FrmUsuario extends JFrame {
 		
 		
 		btnCancelarUsuario.setIcon(new ImageIcon(FrmUsuario.class.getResource("/img/icon_cancelar.png")));
-		btnCancelarUsuario.setBounds(345, 382, 57, 33);
+		btnCancelarUsuario.setBounds(18, 397, 57, 33);
 		panel.add(btnCancelarUsuario);
 		
 		
@@ -267,7 +261,7 @@ public class FrmUsuario extends JFrame {
 		
 		
 		btnNovoUsuario.setIcon(new ImageIcon(FrmUsuario.class.getResource("/img/icon_novo.png")));
-		btnNovoUsuario.setBounds(21, 325, 57, 33);
+		btnNovoUsuario.setBounds(17, 325, 57, 33);
 		panel.add(btnNovoUsuario);
 		btnNovoUsuario.setToolTipText("INCLUIR");
 		
@@ -312,6 +306,15 @@ public class FrmUsuario extends JFrame {
 		btnRemoverUsuario.setBounds(88, 325, 57, 33);
 		btnRemoverUsuario.setToolTipText("REMOVER");
 		panel.add(btnRemoverUsuario);
+		
+		passwordSenhaUsuario = new JPasswordField();
+		passwordSenhaUsuario.setEnabled(false);
+		passwordSenhaUsuario.setBounds(68, 134, 273, 20);
+		panel.add(passwordSenhaUsuario);
+		
+		
+		
+		
 	}
 	
 	private void carregarUsuario() {
@@ -331,7 +334,7 @@ public class FrmUsuario extends JFrame {
 	private void alterarUsuario() {
 		modelUsuario.setNomeUsuario(this.txtNomeUsu.getText());
 		modelUsuario.setLoginUsuario(this.txtLoginUsu.getText());
-		modelUsuario.setSenhaUsuario(this.txtSenha.getText());
+		modelUsuario.setSenhaUsuario(this.passwordSenhaUsuario.getText());
 		
 		boolean retorno = controllerUsuario.verificarDadosUsuario(modelUsuario);
 		if (retorno) {
@@ -351,7 +354,7 @@ public class FrmUsuario extends JFrame {
 	private void salvarUsuario() {
 		modelUsuario.setNomeUsuario(this.txtNomeUsu.getText());
 		modelUsuario.setLoginUsuario(this.txtLoginUsu.getText());
-		modelUsuario.setSenhaUsuario(this.txtSenha.getText());
+		modelUsuario.setSenhaUsuario(this.passwordSenhaUsuario.getText());
 		
 		boolean retorno = controllerUsuario.verificarDadosUsuario(modelUsuario);
 		if (retorno) {
@@ -372,14 +375,14 @@ public class FrmUsuario extends JFrame {
 	private void limparCampos() {
 	txtCodUsu.setText("");
 	txtNomeUsu.setText("");
-	txtSenha.setText("");
+	passwordSenhaUsuario.setText("");
 	txtLoginUsu.setText("");
 	
 }
 	private void habilitaCampos(boolean condicao) {
 		txtNomeUsu.setEnabled(condicao);
 		txtLoginUsu.setEnabled(condicao);
-		txtSenha.setEnabled(condicao);
+		passwordSenhaUsuario.setEnabled(condicao);
 		btnCancelarUsuario.setEnabled(condicao);
 		btnCadastrarUsuario.setEnabled(condicao);
 		txtNomeUsu.grabFocus();
@@ -388,7 +391,7 @@ public class FrmUsuario extends JFrame {
 	private void cancelarUsuario() {
 		txtNomeUsu.setEnabled(false);
 		txtLoginUsu.setEnabled(false);
-		txtSenha.setEnabled(false);
+		passwordSenhaUsuario.setEnabled(false);
 		btnCadastrarUsuario.setEnabled(false);
 		btnCancelarUsuario.setEnabled(false);
 		btnNovoUsuario.grabFocus();
