@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -77,7 +76,6 @@ public class FrmUsuario extends JFrame {
 
 	
 
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 		private void initComponents() {	
 		
 		setResizable(false);
@@ -312,9 +310,7 @@ public class FrmUsuario extends JFrame {
 		passwordSenhaUsuario.setBounds(68, 134, 273, 20);
 		panel.add(passwordSenhaUsuario);
 		
-		
-		
-		
+			
 	}
 	
 	private void carregarUsuario() {
@@ -331,6 +327,7 @@ public class FrmUsuario extends JFrame {
 		}
 	
 
+	@SuppressWarnings("deprecation")
 	private void alterarUsuario() {
 		modelUsuario.setNomeUsuario(this.txtNomeUsu.getText());
 		modelUsuario.setLoginUsuario(this.txtLoginUsu.getText());
@@ -351,6 +348,7 @@ public class FrmUsuario extends JFrame {
 		}
 
 	}
+	@SuppressWarnings("deprecation")
 	private void salvarUsuario() {
 		modelUsuario.setNomeUsuario(this.txtNomeUsu.getText());
 		modelUsuario.setLoginUsuario(this.txtLoginUsu.getText());

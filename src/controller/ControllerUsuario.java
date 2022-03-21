@@ -36,17 +36,19 @@ public class ControllerUsuario {
 	
 	public boolean verificarDadosUsuario(ModelUsuario Usuario) {
 		if (Usuario.getNomeUsuario().equals("")) {
-			JOptionPane.showMessageDialog(null, "Preencha o campo 'Nome'", "Obrigatório: Campo Nome", 0,
+			JOptionPane.showMessageDialog(null, "Preencha o campo Nome", "Obrigatório: Campo Nome", 0,
 					new ImageIcon(getClass().getResource("/img/icon_erro.png")));
+			return false;
 		}
 		
 		if (Usuario.getLoginUsuario().equals("")) {
-			JOptionPane.showMessageDialog(null, "Preencha o campo 'Login'", "Obrigatório: Campo Login", 0,
+			JOptionPane.showMessageDialog(null, "Preencha o campo Login", "Obrigatório: Campo Login", 0,
 					new ImageIcon(getClass().getResource("/img/icon_erro.png")));
+			return false;
 		}
 		
 		if (Usuario.getSenhaUsuario().equals("")) {
-			JOptionPane.showMessageDialog(null, "Preencha o campo 'Senha'", "Obrigatório: Campo Senha", 0,
+			JOptionPane.showMessageDialog(null, "Preencha o campo Senha", "Obrigatório: Campo Senha", 0,
 					new ImageIcon(getClass().getResource("/img/icon_erro.png")));
 			return false;	
 		
