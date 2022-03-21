@@ -338,7 +338,7 @@ public class FrmUsuario extends JFrame {
 		
 		boolean retorno = controllerUsuario.verificarDadosUsuario(modelUsuario);
 		if (retorno) {
-			if (controllerUsuario.salvarUsuarioController(modelUsuario) > 0) {
+			if (controllerUsuario.alterarUsuarioController(modelUsuario)) {
 				JOptionPane.showMessageDialog(null, "Usuario cadastrado com Sucesso", "Sucesso", 0,
 						new ImageIcon(getClass().getResource("/img/icon_correto.png")));
 				carregarUsuario();
@@ -358,7 +358,7 @@ public class FrmUsuario extends JFrame {
 		
 		boolean retorno = controllerUsuario.verificarDadosUsuario(modelUsuario);
 		if (retorno) {
-			if (controllerUsuario.salvarUsuarioController(modelUsuario) > 0) {
+			if (controllerUsuario.salvarUsuarioController(modelUsuario) > 0 ){
 				JOptionPane.showMessageDialog(null, "Usuario cadastrado com Sucesso", "Sucesso", 0,
 						new ImageIcon(getClass().getResource("/img/icon_correto.png")));
 				carregarUsuario();
@@ -369,8 +369,8 @@ public class FrmUsuario extends JFrame {
 						new ImageIcon(getClass().getResource("/img/icon_erro.png")));
 			}
 		}
-
 	}
+	
 
 	private void limparCampos() {
 	txtCodUsu.setText("");

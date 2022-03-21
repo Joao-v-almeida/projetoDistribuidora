@@ -42,7 +42,7 @@ import conexoes.ConexaoMySql;
 				this.conectar();
 				return this.executarUpdateDeleteSQL("UPDATE USU_USUARIO SET " + "USU_NOME = '" + usuario.getNomeUsuario()
 						+ "'," + "USU_LOGIN = '" + usuario.getLoginUsuario() + "'," + "USU_SENHA = '"
-						+ usuario.getSenhaUsuario() + "'" + " WHERE USU_ID = '" + "';");
+						+ usuario.getSenhaUsuario() + "'" + " WHERE USU_ID = '" + usuario.getIdUsuario() + "';");
 			} catch (Exception e) {
 				e.printStackTrace();
 				return false;
