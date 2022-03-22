@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -15,7 +14,6 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
-import java.awt.Component;
 import java.awt.Dimension;
 
 public class FrmPrincipal extends JFrame {
@@ -86,7 +84,8 @@ public class FrmPrincipal extends JFrame {
 		JMenuItem menuUsuarios = new JMenuItem("Usu\u00E1rios");
 		menuUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				FrmUsuario frmUsuario = new FrmUsuario();
+				frmUsuario.setVisible(true);
 			}
 		});
 		menuUsuarios.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/icon_usuario.png")));
