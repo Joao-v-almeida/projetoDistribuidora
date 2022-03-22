@@ -1,22 +1,26 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JMenu;
-import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.Frame;
+import javax.swing.ImageIcon;
+import java.awt.Component;
+import java.awt.Dimension;
 
-public class FrmPrincipal {
+public class FrmPrincipal extends JFrame {
 
-	private static final int MAXIMIZED_BOTH = 0;
-	private JFrame frmDistribuidora;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
@@ -25,8 +29,8 @@ public class FrmPrincipal {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					FrmPrincipal window = new FrmPrincipal();
-					window.frmDistribuidora.setVisible(true);
+					FrmPrincipal frame = new FrmPrincipal();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,26 +39,26 @@ public class FrmPrincipal {
 	}
 
 	/**
-	 * Create the application.
+	 * Create the frame.
 	 */
 	public FrmPrincipal() {
-		initialize();
-	}
-
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frmDistribuidora = new JFrame();
-		frmDistribuidora.setResizable(false);
-		frmDistribuidora.setExtendedState(Frame.MAXIMIZED_BOTH);
-		frmDistribuidora.setTitle("Distribuidora");
-		frmDistribuidora.setIconImage(Toolkit.getDefaultToolkit().getImage(FrmPrincipal.class.getResource("/img/icon_menu.png")));
-		frmDistribuidora.setBounds(100, 100, 450, 300);
-		frmDistribuidora.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setIconImage(Toolkit.getDefaultToolkit().getImage(FrmPrincipal.class.getResource("/img/icon_menu.png")));
+		setTitle("Distribuidora");
+		setExtendedState(JFrame.MAXIMIZED_BOTH);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 1360, 744);
+		contentPane = new JPanel();
+		contentPane.setRequestFocusEnabled(false);
+		contentPane.setOpaque(false);
+		contentPane.setPreferredSize(new Dimension(20, 20));
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
 		JMenuBar menuBar = new JMenuBar();
-		frmDistribuidora.setJMenuBar(menuBar);
+		menuBar.setBounds(0, 0, 1366, 22);
+		contentPane.add(menuBar);
 		
 		JMenu menuCadastro = new JMenu("Cadastros");
 		menuBar.add(menuCadastro);
@@ -82,8 +86,7 @@ public class FrmPrincipal {
 		JMenuItem menuUsuarios = new JMenuItem("Usu\u00E1rios");
 		menuUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FrmUsuario frmUsuario = new FrmUsuario();
-				frmUsuario.setVisible(true);
+				
 			}
 		});
 		menuUsuarios.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/icon_usuario.png")));
@@ -92,8 +95,8 @@ public class FrmPrincipal {
 		JMenu menuVendas = new JMenu("Vendas");
 		menuBar.add(menuVendas);
 		
-		JMenu menuArquivos = new JMenu("Sistema");
-		menuBar.add(menuArquivos);
+		JMenu menuSistema = new JMenu("Sistema");
+		menuBar.add(menuSistema);
 		
 		JButton btnSair = new JButton("Sair");
 		btnSair.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/Icon_sair.png")));
@@ -102,7 +105,16 @@ public class FrmPrincipal {
 				System.exit(0);
 			}
 		});
-		menuArquivos.add(btnSair);
+		menuSistema.add(btnSair);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(0, 0, 1366, 705);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblImgFundo = new JLabel("");
+		lblImgFundo.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/img_fundo.jpg")));
+		lblImgFundo.setBounds(0, 0, 1366, 705);
+		panel.add(lblImgFundo);
 	}
-
 }
