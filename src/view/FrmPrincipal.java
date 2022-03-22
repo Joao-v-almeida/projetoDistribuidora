@@ -18,6 +18,10 @@ import java.awt.Dimension;
 
 public class FrmPrincipal extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
@@ -53,14 +57,14 @@ public class FrmPrincipal extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
+
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 1366, 22);
 		contentPane.add(menuBar);
-		
+
 		JMenu menuCadastro = new JMenu("Cadastros");
 		menuBar.add(menuCadastro);
-		
+
 		JMenuItem menuClientes = new JMenuItem("Clientes");
 		menuClientes.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -70,7 +74,7 @@ public class FrmPrincipal extends JFrame {
 		});
 		menuClientes.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/icon_cliente.png")));
 		menuCadastro.add(menuClientes);
-		
+
 		JMenuItem menuProdutos = new JMenuItem("Produtos");
 		menuProdutos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -80,7 +84,7 @@ public class FrmPrincipal extends JFrame {
 		});
 		menuProdutos.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/icon_produto.png")));
 		menuCadastro.add(menuProdutos);
-		
+
 		JMenuItem menuUsuarios = new JMenuItem("Usu\u00E1rios");
 		menuUsuarios.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -90,13 +94,13 @@ public class FrmPrincipal extends JFrame {
 		});
 		menuUsuarios.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/icon_usuario.png")));
 		menuCadastro.add(menuUsuarios);
-		
+
 		JMenu menuVendas = new JMenu("Vendas");
 		menuBar.add(menuVendas);
-		
+
 		JMenu menuSistema = new JMenu("Sistema");
 		menuBar.add(menuSistema);
-		
+
 		JButton btnSair = new JButton("Sair");
 		btnSair.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/Icon_sair.png")));
 		btnSair.addActionListener(new ActionListener() {
@@ -105,12 +109,12 @@ public class FrmPrincipal extends JFrame {
 			}
 		});
 		menuSistema.add(btnSair);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(0, 0, 1366, 705);
 		contentPane.add(panel);
 		panel.setLayout(null);
-		
+
 		JLabel lblImgFundo = new JLabel("");
 		lblImgFundo.setIcon(new ImageIcon(FrmPrincipal.class.getResource("/img/img_fundo.jpg")));
 		lblImgFundo.setBounds(0, 0, 1366, 705);
