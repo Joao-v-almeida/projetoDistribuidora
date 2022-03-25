@@ -336,7 +336,7 @@ public class FrmUsuario extends JFrame {
 		boolean retorno = controllerUsuario.verificarDadosUsuario(modelUsuario);
 		if (retorno) {
 			if (controllerUsuario.alterarUsuarioController(modelUsuario)) {
-				JOptionPane.showMessageDialog(null, "Usuario cadastrado com Sucesso", "Sucesso", 0,
+				JOptionPane.showMessageDialog(null, "Usuário alterado com Sucesso", "Sucesso", 0,
 						new ImageIcon(getClass().getResource("/img/icon_correto.png")));
 				carregarUsuario();
 				limparCampos();
@@ -357,7 +357,7 @@ public class FrmUsuario extends JFrame {
 		boolean retorno = controllerUsuario.verificarDadosUsuario(modelUsuario);
 		if (retorno) {
 			if (controllerUsuario.salvarUsuarioController(modelUsuario) > 0 ){
-				JOptionPane.showMessageDialog(null, "Usuario cadastrado com Sucesso", "Sucesso", 0,
+				JOptionPane.showMessageDialog(null, "Usuário cadastrado com Sucesso", "Sucesso", 0,
 						new ImageIcon(getClass().getResource("/img/icon_correto.png")));
 				carregarUsuario();
 				limparCampos();
